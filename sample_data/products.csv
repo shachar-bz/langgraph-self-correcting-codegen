@@ -1,0 +1,16 @@
+ProductID,ProductName,Category,Price
+P101,Wireless Mouse,Electronics,29.99
+P102,Mechanical Keyboard,Electronics,89.50
+P103,USB-C Hub,Electronics,45.00
+P104,Running Shoes,Sports,120.00
+P105,Yoga Mat,Sports,35.00
+P106,Water Bottle,Sports,18.50
+P107,Python Cookbook,Books,42.99
+P108,Data Science Handbook,Books,55.00
+P109,Algorithm Design Manual,Books,64.75
+P110,Desk Lamp,Home,38.00
+P111,Standing Desk Pad,Home,27.50
+P112,Noise-Canceling Headphones,Electronics,199.99
+P113,Fitness Tracker,Electronics,149.00
+P114,Camping Tent,Sports,210.00
+P115,Coffee Maker,Home,75.00

@@ -1,0 +1,7 @@
+query_name:top-spender
+data_file: customers.csv
+description: This csv file contains customer information. Each line is of the form: CustomerID,FirstName,LastName,City,Country
+data_file: orders.csv
+description: This csv file contains order records. Each line is of the form: OrderID,CustomerID,ProductID,Quantity,OrderDate,Status
+data_file: products.csv
+description: This csv file contains product details. Each line is of the form: ProductID,ProductName,Category,Price
