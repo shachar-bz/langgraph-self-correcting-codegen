@@ -17,6 +17,20 @@ failed correctness check), writes a diagnosis of the mistake, and tries again wi
 
 ## What it does, step by step
 
+```mermaid
+%%{init: {"themeVariables": {"fontSize": "22px"}, "flowchart": {"nodeSpacing": 70, "rankSpacing": 35, "padding": 18}}}%%
+flowchart LR
+    A[GetQueryDetails] --> B[GenQueryProgram]
+    B --> C[ExecuteProgram]
+    C --> D{Chk4rErr}
+    D -- pass / max tries --> F[Finalize]
+    D -- failed --> R[ReflectOnErr]
+    R --> G[ReGenQueryPgm]
+    G --> C
+```
+
+<br>
+
 Given a query (plain text) and a description of each data file, the agent:
 
 1. **Reads the task.** `query_input.txt` names the query and lists the data files with a description of their
@@ -39,22 +53,6 @@ Given a query (plain text) and a description of each data file, the agent:
    diagnosis, and asks for a corrected program. The loop returns to step 3.
 7. **Finalizes.** The loop ends when an answer passes validation or when the attempt limit is reached
    (5 attempts in total). Either way, the result is written to disk (see [Output files](#output-files)).
-
-<br>
-
-```mermaid
-%%{init: {"themeVariables": {"fontSize": "20px"}, "flowchart": {"nodeSpacing": 50, "rankSpacing": 60, "padding": 15}}}%%
-flowchart LR
-    A[GetQueryDetails] --> B[GenQueryProgram]
-    B --> C[ExecuteProgram]
-    C --> D{Chk4rErr}
-    D -- correct, or out of attempts --> F[Finalize]
-    D -- failed --> R[ReflectOnErr]
-    R --> G[ReGenQueryPgm]
-    G --> C
-```
-
-<br>
 
 ### Details worth knowing
 
