@@ -40,7 +40,10 @@ Given a query (plain text) and a description of each data file, the agent:
 7. **Finalizes.** The loop ends when an answer passes validation or when the attempt limit is reached
    (5 attempts in total). Either way, the result is written to disk (see [Output files](#output-files)).
 
+<br>
+
 ```mermaid
+%%{init: {"themeVariables": {"fontSize": "20px"}, "flowchart": {"nodeSpacing": 50, "rankSpacing": 60, "padding": 15}}}%%
 flowchart LR
     A[GetQueryDetails] --> B[GenQueryProgram]
     B --> C[ExecuteProgram]
@@ -51,15 +54,7 @@ flowchart LR
     G --> C
 ```
 
-| Node | Responsibility |
-|---|---|
-| `GetQueryDetails` | Parse `query_input.txt`, read the query text, work out the validator's name, build the initial state. |
-| `GenQueryProgram` | First LLM call: query + data descriptions → program. |
-| `ExecuteProgram` | Write the program to disk, run it, parse its JSON output, call the validator. |
-| `Chk4rErr` | Routing point: stop on success or when attempts run out, otherwise go reflect. |
-| `ReflectOnErr` | Second LLM call: original prompt + failed program + error → written diagnosis. |
-| `ReGenQueryPgm` | Third LLM call: query + failed program + diagnosis → new program; increments the attempt counter. |
-| `Finalize` | Write the four output files and print the outcome. |
+<br>
 
 ### Details worth knowing
 
